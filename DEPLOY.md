@@ -2,15 +2,6 @@
 
 Ce guide vous explique comment déployer votre application Hot Takes sur Render (backend) et Netlify (frontend).
 
-## Prérequis
-
-- Compte GitHub (pour connecter vos repos)
-- Compte MongoDB Atlas (déjà configuré ✓)
-- Compte Render (gratuit)
-- Compte Netlify (gratuit)
-
----
-
 ## 1. Déployer le Backend sur Render
 
 ### Étape 1: Créer un compte Render
@@ -90,84 +81,3 @@ git push origin main
 
 ### Étape 5: Obtenir l'URL
 Netlify vous donnera une URL (ex: `https://random-name.netlify.app`)
-
----
-
-## 3. Tester l'Application
-
-1. Ouvrez l'URL Netlify dans votre navigateur
-2. Créez un compte utilisateur
-3. Connectez-vous
-4. Testez l'ajout d'une sauce avec une image
-
----
-
-## 4. Configuration Optionnelle
-
-### Domaine personnalisé (Netlify)
-1. Dans les paramètres Netlify → **Domain management**
-2. Ajoutez votre domaine personnalisé
-
-### Mise à jour automatique
-Les deux services (Render et Netlify) se mettront à jour automatiquement à chaque push sur la branche `main`.
-
----
-
-## 5. Surveillance et Logs
-
-### Backend (Render)
-- Logs: Dashboard Render → votre service → onglet "Logs"
-- Redémarrage: Dashboard → "Manual Deploy" → "Clear build cache & deploy"
-
-### Frontend (Netlify)
-- Logs: Dashboard Netlify → votre site → "Deploys"
-- Redéployer: "Trigger deploy" → "Deploy site"
-
----
-
-## Problèmes Courants
-
-### Le backend ne se connecte pas à MongoDB
-- Vérifiez que `MONGO_URI` est bien configuré dans Render
-- Vérifiez que votre IP est autorisée dans MongoDB Atlas (0.0.0.0/0 pour autoriser toutes les IPs)
-
-### Les images ne s'affichent pas
-- Les images uploadées sur Render Free ne persistent pas après redémarrage
-- Solution: Utilisez un service de stockage comme Cloudinary ou AWS S3
-
-### Erreurs CORS
-- Vérifiez que le `netlify.toml` contient la bonne URL backend
-- Les redirects Netlify doivent pointer vers votre URL Render
-
----
-
-## Structure des Fichiers Créés
-
-```
-nodejs_hot_takes/
-├── backend/
-│   ├── .env (à NE PAS commiter)
-│   ├── .env.example (template)
-│   ├── .gitignore
-│   └── render.yaml
-├── frontend/
-│   └── netlify.toml
-└── DEPLOY.md (ce fichier)
-```
-
----
-
-## URLs de votre Application
-
-Une fois déployé, notez vos URLs ici:
-
-- **Frontend**: https://__________.netlify.app
-- **Backend**: https://__________.onrender.com
-
----
-
-## Support
-
-- Documentation Render: https://render.com/docs
-- Documentation Netlify: https://docs.netlify.com
-- Documentation MongoDB Atlas: https://docs.atlas.mongodb.com
